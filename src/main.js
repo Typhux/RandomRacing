@@ -1,17 +1,34 @@
 import { createApp } from 'vue'
 import { VueFire, VueFireAuth } from 'vuefire'
-import App from './App.vue'
 import { firebaseApp } from './firebase'
+import { createVuesticEssential } from "vuestic-ui";
+import "vuestic-ui/css";
+import App from './App.vue'
 
 const app = createApp(App)
 
 app.use(VueFire, {
-    // imported above but could also just be created here
     firebaseApp,
     modules: [
-      // we will see other modules later on
       VueFireAuth(),
     ],
-  })
+  },
+  createVuesticEssential({
+    config: {
+      colors: {
+        variables: {
+          primary: "#23e066",
+          secondary: "#002c85",
+          success: "#40e583",
+          info: "#2c82e0",
+          danger: "#e34b4a",
+          warning: "#ffc200",
+          gray: "#babfc2",
+          dark: "#34495e",
+          yourCustomColor: "#d0f55d",
+        },
+      },
+    },
+  }))
 
 app.mount('#app')
